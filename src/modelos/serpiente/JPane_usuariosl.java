@@ -61,6 +61,8 @@ public class JPane_usuariosl extends javax.swing.JPanel {
         btnguardar = new javax.swing.JButton();
         jLabelFoto = new javax.swing.JLabel();
 
+        setBorder(javax.swing.BorderFactory.createTitledBorder("REGISTRO JUGADOR"));
+
         btnfoto.setText("Cargar foto");
         btnfoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -148,9 +150,8 @@ public class JPane_usuariosl extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(btnfoto)
-                        .addContainerGap(64, Short.MAX_VALUE))
+                        .addContainerGap(52, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(51, 51, 51))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
