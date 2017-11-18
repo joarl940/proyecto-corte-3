@@ -45,7 +45,7 @@ public class Categorias extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("USUARIOS REGISTRADOR POR CATEGORIAS\n");
+        setTitle("Usuarios registrados ");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
