@@ -33,7 +33,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="modelos.serpiente.JPane_juegol" name="jPane_juegol1">
+    <Container class="juego.JPane_juegol" name="jPane_juegol1">
 
       <Layout>
         <DimensionLayout dim="0">

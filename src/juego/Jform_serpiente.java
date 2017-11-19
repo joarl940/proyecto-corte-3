@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos.serpiente;
+package juego;
 
 /**
  *
@@ -27,7 +27,7 @@ public class Jform_serpiente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPane_juegol1 = new modelos.serpiente.JPane_juegol();
+        jPane_juegol1 = new juego.JPane_juegol();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,6 +93,6 @@ public class Jform_serpiente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private modelos.serpiente.JPane_juegol jPane_juegol1;
+    private juego.JPane_juegol jPane_juegol1;
     // End of variables declaration//GEN-END:variables
 }
