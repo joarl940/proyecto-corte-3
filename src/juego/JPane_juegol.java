@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modelos.serpiente;
+package juego;
 
+import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,24 +13,29 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import principal.Principal;
 
 /**
  *
  * @author Jose
  */
 public class JPane_juegol extends javax.swing.JPanel implements Runnable, KeyListener{
+    
+ 
+
+    
 private Thread hilo;
 private final int ancho=500;
 private final int alto=400;
-//gameLoop
+
 private boolean movimiento;
 private long tiempo;
 
-//render
 private Graphics2D g2d;
 private  BufferedImage image;
 
-//game stuff
+
 private int SIZE=10;
 private Render cuerpo,comida;
 private ArrayList<Render> snake;
@@ -50,6 +56,7 @@ private boolean arriba,abajo,derecha,izquierda,inicio;
        requestFocus();
         addKeyListener(this);
     }
+@Override
     public void addNotify(){
     super.addNotify();
     hilo=new Thread(this);
@@ -146,6 +153,8 @@ comida.setPosicion(x, y);
       if(inicio){
       setUplevel();
       }
+      return;
+     
       }
 if(arriba&&dy==0){
 dy=-SIZE;
@@ -215,7 +224,12 @@ if(cuerpo.getY()>alto)cuerpo.setY(0);
     g2d.setColor(Color.GREEN);
     comida.render(g2d);
     if(finJuego){
-    g2d.drawString("FIN DEL JUEGO", 150,200);
+      JOptionPane.showMessageDialog(this,"FIN DEL JUEGO");
+      System.exit(0);
+ 
+      
+      
+    
     }
     
     g2d.setColor(Color.WHITE);

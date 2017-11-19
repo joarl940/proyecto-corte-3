@@ -5,15 +5,18 @@
  */
 package modelos.serpiente;
 
+import juego.Jform_serpiente;
 import java.awt.Image;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.table.DefaultTableModel;
 import principal.Principal;
 
 /**
@@ -24,6 +27,9 @@ public class JPane_usuariosl extends javax.swing.JPanel {
     private Datos_usuarios usuarios;
     File fichero;
     Principal principal;
+    Jform_serpiente juego;
+    private DefaultTableModel table_model_jugador;
+    
     
 
     /**
@@ -31,6 +37,65 @@ public class JPane_usuariosl extends javax.swing.JPanel {
      */
     public JPane_usuariosl() {
         initComponents();
+    }
+     public void setTableModel(DefaultTableModel table_model_jugador){
+        this.table_model_jugador = table_model_jugador;
+    }
+         public void refreshTableModel()
+    {
+        ArrayList<Datos_usuarios> lista_jugadores = repositorio.obtenerTodos();
+        while (table_model_jugador.getRowCount() > 0) {
+            table_model_jugador.removeRow(0);
+        }
+        
+        
+        for(Datos_usuarios p : lista_jugadores)
+        {
+            String[] data = {Integer.toString(p.getId()), p.getFoto(),Integer.toString(p.getCedula()), p.getNombre(), p.getApellido(), Integer.toString(p.getEdad()), p.getFecha_nacimiento(),p.getFecha_registro(),Integer.toString(p.getPuntaje())};
+            table_model_jugador.addRow(data);
+        }
+    }
+     public void refreshTableModelInfantil()
+    {
+        ArrayList<Datos_usuarios> lista_jugadores = repositorio.categoriaInfantil();
+        while (table_model_jugador.getRowCount() > 0) {
+            table_model_jugador.removeRow(0);
+        }
+        
+        
+        for(Datos_usuarios p : lista_jugadores)
+        {
+            String[] data = {Integer.toString(p.getId()), p.getFoto(),Integer.toString(p.getCedula()), p.getNombre(), p.getApellido(), Integer.toString(p.getEdad()), p.getFecha_nacimiento(),p.getFecha_registro(),Integer.toString(p.getPuntaje())};
+            table_model_jugador.addRow(data);
+        }
+    }
+        public void refreshTableModelJuvenil()
+    {
+        ArrayList<Datos_usuarios> lista_jugadores = repositorio.categoriaJuvenil();
+        while (table_model_jugador.getRowCount() > 0) {
+            table_model_jugador.removeRow(0);
+        }
+        
+        
+        for(Datos_usuarios p : lista_jugadores)
+        {
+            String[] data = {Integer.toString(p.getId()), p.getFoto(),Integer.toString(p.getCedula()), p.getNombre(), p.getApellido(), Integer.toString(p.getEdad()), p.getFecha_nacimiento(),p.getFecha_registro(),Integer.toString(p.getPuntaje())};
+            table_model_jugador.addRow(data);
+        }
+    }
+           public void refreshTableModelMayores()
+    {
+        ArrayList<Datos_usuarios> lista_jugadores = repositorio.categoriaMayores();
+        while (table_model_jugador.getRowCount() > 0) {
+            table_model_jugador.removeRow(0);
+        }
+        
+        
+        for(Datos_usuarios p : lista_jugadores)
+        {
+            String[] data = {Integer.toString(p.getId()), p.getFoto(),Integer.toString(p.getCedula()), p.getNombre(), p.getApellido(), Integer.toString(p.getEdad()), p.getFecha_nacimiento(),p.getFecha_registro(),Integer.toString(p.getPuntaje())};
+            table_model_jugador.addRow(data);
+        }
     }
        public void resetformulario(){
       txtcedula.setText("");
@@ -224,14 +289,18 @@ public class JPane_usuariosl extends javax.swing.JPanel {
      JOptionPane.showMessageDialog(this, "Por favor diligencie todo el formulario", "Error", JOptionPane.ERROR_MESSAGE);
        
 }else{
+    
+     
     usuarios=Datos_usuarios.crear(0,foto,Integer.parseInt(txtcedula.getText()),txtnombre.getText(),txtapellido.getText(),Integer.parseInt(txtedad.getText()),txtfecha_n.getText(),fecha_registro,0);
        repositorio.crear(usuarios);
-        JOptionPane.showMessageDialog(this, "Persona creada satisfactoriamente", "Bien", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, "Jugador registrado", "Bien", JOptionPane.INFORMATION_MESSAGE);
         
         
-          this.resetformulario();
-            Jform_serpiente juego =new Jform_serpiente();
-          juego.setVisible(true);
+         this.resetformulario();
+         juego=new Jform_serpiente();
+         juego.setVisible(true);
+         
+        
           
           
           

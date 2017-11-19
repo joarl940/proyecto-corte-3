@@ -31,6 +31,7 @@ public class Puntajes extends javax.swing.JFrame {
         table_model_personas.addColumn("Edad");
         table_model_personas.addColumn("Fecha nacimi");
         table_model_personas.addColumn("Fecha registro");
+         table_model_personas.addColumn("puntaje");
         
         jTable1.setModel(table_model_personas);
         jTable2.setModel(table_model_personas);

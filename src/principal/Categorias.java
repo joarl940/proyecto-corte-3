@@ -6,13 +6,14 @@
 package principal;
 
 import javax.swing.table.DefaultTableModel;
+import modelos.serpiente.JPane_usuariosl;
 
 /**
  *
  * @author Jose
  */
 public class Categorias extends javax.swing.JFrame {
-    
+    JPane_usuariosl panel=new JPane_usuariosl();
     Principal principal=new Principal();
 
     /**
@@ -20,7 +21,10 @@ public class Categorias extends javax.swing.JFrame {
      */
     public Categorias() {
         initComponents();
-        configComponents();
+        configComponentsInfantil();
+        configComponentsJuvenil();
+        configComponentsMayores();
+                 
     }
 
     /**
@@ -209,7 +213,7 @@ public class Categorias extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 
-    private void configComponents() {
+    private void configComponentsInfantil() {
         DefaultTableModel table_model_personas = new DefaultTableModel();
         table_model_personas.addColumn("Id");
         table_model_personas.addColumn("Foto");
@@ -221,11 +225,44 @@ public class Categorias extends javax.swing.JFrame {
         table_model_personas.addColumn("Fecha registro");
         
         jTable1.setModel(table_model_personas);
+       
+        
+      panel.setTableModel(table_model_personas);
+        panel.refreshTableModelInfantil();
+    }
+    private void configComponentsJuvenil() {
+        DefaultTableModel table_model_personas = new DefaultTableModel();
+        table_model_personas.addColumn("Id");
+        table_model_personas.addColumn("Foto");
+        table_model_personas.addColumn("Documento");
+        table_model_personas.addColumn("Nombre");
+        table_model_personas.addColumn("Apellido");
+        table_model_personas.addColumn("Edad");
+        table_model_personas.addColumn("Fecha nacimi");
+        table_model_personas.addColumn("Fecha registro");
+        
         jTable2.setModel(table_model_personas);
+       
+        
+      panel.setTableModel(table_model_personas);
+        panel.refreshTableModelJuvenil();
+    }
+    private void configComponentsMayores() {
+        DefaultTableModel table_model_personas = new DefaultTableModel();
+        table_model_personas.addColumn("Id");
+        table_model_personas.addColumn("Foto");
+        table_model_personas.addColumn("Documento");
+        table_model_personas.addColumn("Nombre");
+        table_model_personas.addColumn("Apellido");
+        table_model_personas.addColumn("Edad");
+        table_model_personas.addColumn("Fecha nacimi");
+        table_model_personas.addColumn("Fecha registro");
+        
+        
         jTable3.setModel(table_model_personas);
         
-       // panel_personas.setTableModel(table_model_personas);
-        //panel_personas.refreshTableModel();
+      panel.setTableModel(table_model_personas);
+        panel.refreshTableModelMayores();
     }
 
 

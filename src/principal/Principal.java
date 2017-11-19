@@ -5,7 +5,9 @@
  */
 package principal;
 
+import modelos.serpiente.Frame_Usuario;
 import modelos.serpiente.JPane_usuariosl;
+import juego.Jform_serpiente;
 
 /**
  *
@@ -18,6 +20,7 @@ public class Principal extends javax.swing.JFrame {
  Categorias usuariosRegistrados;
   Puntajes puntos;
   Historial historial;
+    Jform_serpiente juegoinicio;
     /**
      * Creates new form Principal
      */
@@ -139,9 +142,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void jbtIniciarlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtIniciarlActionPerformed
         // TODO add your handling code here:
+       
         jugarUsuario=new Frame_Usuario();
-           
+        
         jugarUsuario.setVisible(true);
+     
         this.dispose();
      
     }//GEN-LAST:event_jbtIniciarlActionPerformed

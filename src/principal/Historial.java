@@ -6,6 +6,8 @@
 package principal;
 
 import javax.swing.table.DefaultTableModel;
+import juego.JPane_juegol;
+import modelos.serpiente.JPane_usuariosl;
 
 /**
  *
@@ -13,6 +15,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Historial extends javax.swing.JFrame {
     Principal principal;
+    JPane_usuariosl panel=new JPane_usuariosl();
 
     /**
      * Creates new form Historial
@@ -31,12 +34,13 @@ public class Historial extends javax.swing.JFrame {
         table_model_personas.addColumn("Edad");
         table_model_personas.addColumn("Fecha nacimi");
         table_model_personas.addColumn("Fecha registro");
+        table_model_personas.addColumn("puntaje");
         
         jTableHistorial.setModel(table_model_personas);
         
         
-       // panel_personas.setTableModel(table_model_personas);
-        //panel_personas.refreshTableModel();
+        panel.setTableModel(table_model_personas);
+        panel.refreshTableModel();
     }
 
     /**

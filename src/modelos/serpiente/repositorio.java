@@ -7,7 +7,9 @@ package modelos.serpiente;
 
 import dataBase.DBManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 /**
  *
@@ -38,5 +40,97 @@ public class repositorio {
             e.printStackTrace();
         }
 
+    }
+       
+           public static ArrayList<Datos_usuarios> obtenerTodos() {
+        ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
+
+        try {
+            String query = "SELECT * FROM usuario;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+                jugadores.add(Datos_usuarios.crear(resultado.getInt("id"), resultado.getString("foto"), resultado.getInt("cedula"),resultado.getString("nombre"),resultado.getString("apellido"), resultado.getInt("edad"), resultado.getString("fecha_nacimiento"), resultado.getString("fecha_registro"),resultado.getInt("puntaje")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return jugadores;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return jugadores;
+    }
+                 
+           public static ArrayList<Datos_usuarios> categoriaInfantil() {
+        ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
+
+        try {
+            String query = "SELECT * FROM usuario WHERE edad Between 5 And 15;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+                jugadores.add(Datos_usuarios.crear(resultado.getInt("id"), resultado.getString("foto"), resultado.getInt("cedula"),resultado.getString("nombre"),resultado.getString("apellido"), resultado.getInt("edad"), resultado.getString("fecha_nacimiento"), resultado.getString("fecha_registro"),resultado.getInt("puntaje")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return jugadores;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return jugadores;
+    }
+                            
+           public static ArrayList<Datos_usuarios> categoriaJuvenil() {
+        ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
+
+        try {
+            String query = "SELECT * FROM usuario WHERE edad Between 16 And 24;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+                jugadores.add(Datos_usuarios.crear(resultado.getInt("id"), resultado.getString("foto"), resultado.getInt("cedula"),resultado.getString("nombre"),resultado.getString("apellido"), resultado.getInt("edad"), resultado.getString("fecha_nacimiento"), resultado.getString("fecha_registro"),resultado.getInt("puntaje")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return jugadores;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return jugadores;
+    }
+                            
+           public static ArrayList<Datos_usuarios> categoriaMayores() {
+        ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
+
+        try {
+            String query = "SELECT * FROM usuario WHERE edad Between 25 And 50;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+                jugadores.add(Datos_usuarios.crear(resultado.getInt("id"), resultado.getString("foto"), resultado.getInt("cedula"),resultado.getString("nombre"),resultado.getString("apellido"), resultado.getInt("edad"), resultado.getString("fecha_nacimiento"), resultado.getString("fecha_registro"),resultado.getInt("puntaje")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return jugadores;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return jugadores;
     }
 }
