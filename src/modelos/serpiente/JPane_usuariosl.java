@@ -8,9 +8,11 @@ package modelos.serpiente;
 import juego.Jform_serpiente;
 import java.awt.Image;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -41,6 +43,7 @@ public class JPane_usuariosl extends javax.swing.JPanel {
      public void setTableModel(DefaultTableModel table_model_jugador){
         this.table_model_jugador = table_model_jugador;
     }
+        //actualiza la tabla general
          public void refreshTableModel()
     {
         ArrayList<Datos_usuarios> lista_jugadores = repositorio.obtenerTodos();
@@ -55,6 +58,7 @@ public class JPane_usuariosl extends javax.swing.JPanel {
             table_model_jugador.addRow(data);
         }
     }
+     //actualiza la tabla de categoria infantil
      public void refreshTableModelInfantil()
     {
         ArrayList<Datos_usuarios> lista_jugadores = repositorio.categoriaInfantil();
@@ -69,6 +73,7 @@ public class JPane_usuariosl extends javax.swing.JPanel {
             table_model_jugador.addRow(data);
         }
     }
+        //actualiza la tabla de categoria juvenil
         public void refreshTableModelJuvenil()
     {
         ArrayList<Datos_usuarios> lista_jugadores = repositorio.categoriaJuvenil();
@@ -83,6 +88,7 @@ public class JPane_usuariosl extends javax.swing.JPanel {
             table_model_jugador.addRow(data);
         }
     }
+            //actualiza la tabla de categoria mayores
            public void refreshTableModelMayores()
     {
         ArrayList<Datos_usuarios> lista_jugadores = repositorio.categoriaMayores();
@@ -97,12 +103,13 @@ public class JPane_usuariosl extends javax.swing.JPanel {
             table_model_jugador.addRow(data);
         }
     }
+       //deja los espacios vacios en el formulario
        public void resetformulario(){
       txtcedula.setText("");
       txtedad.setText("");
       txtnombre.setText("");
       txtapellido.setText("");
-      txtfecha_n.setText("");
+      
      
               }
 
@@ -125,10 +132,9 @@ public class JPane_usuariosl extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         txtedad = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtfecha_n = new javax.swing.JTextField();
         btnguardar = new javax.swing.JButton();
         jLabelFoto = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        jDateChooserFecha = new com.toedter.calendar.JDateChooser();
 
         setBorder(javax.swing.BorderFactory.createTitledBorder("REGISTRO JUGADOR"));
 
@@ -173,12 +179,6 @@ public class JPane_usuariosl extends javax.swing.JPanel {
 
         jLabel5.setText("Fecha nacimiento");
 
-        txtfecha_n.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtfecha_nActionPerformed(evt);
-            }
-        });
-
         btnguardar.setBackground(new java.awt.Color(204, 255, 255));
         btnguardar.setText("GUARDAR");
         btnguardar.addActionListener(new java.awt.event.ActionListener() {
@@ -189,14 +189,14 @@ public class JPane_usuariosl extends javax.swing.JPanel {
 
         jLabelFoto.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel6.setText("yyyy-mm-dd");
+        jDateChooserFecha.setDateFormatString("yyyy-MM-dd");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(51, 51, 51)
+                .addGap(57, 57, 57)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
@@ -212,34 +212,32 @@ public class JPane_usuariosl extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
                                     .addComponent(jLabel3)
                                     .addComponent(jLabel4))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                                .addGap(50, 50, 50))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(33, 33, 33)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtfecha_n, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(33, 33, 33)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtedad, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                            .addComponent(jDateChooserFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(24, 24, 24)
+                    .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnfoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 4, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jLabelFoto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtcedula, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
@@ -254,44 +252,44 @@ public class JPane_usuariosl extends javax.swing.JPanel {
                             .addComponent(txtedad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtfecha_n)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel6)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                            .addComponent(jLabel5)
+                            .addComponent(jDateChooserFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(9, 9, 9)
+                        .addGap(19, 19, 19)
                         .addComponent(jLabelFoto, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnfoto)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(10, 10, 10))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnfoto)))
+                .addGap(27, 27, 27)
+                .addComponent(btnguardar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnguardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnguardarActionPerformed
         // TODO add your handling code here:
-                
+        
         DateTimeFormatter formatter=DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDateTime ahora=LocalDateTime.now();
         String fecha_registro=ahora.format(formatter);
         String foto=fichero.toString();
-                
+        
+               
         if( txtcedula.getText().isEmpty() ||
     txtedad.getText().isEmpty() || 
         txtnombre.getText().isEmpty() ||// TODO add your handling code here:
-        txtapellido.getText().isEmpty() ||
-        txtfecha_n.getText().isEmpty() 
-        ){
+        txtapellido.getText().isEmpty())
+       {
      JOptionPane.showMessageDialog(this, "Por favor diligencie todo el formulario", "Error", JOptionPane.ERROR_MESSAGE);
        
 }else{
     
-     
-    usuarios=Datos_usuarios.crear(0,foto,Integer.parseInt(txtcedula.getText()),txtnombre.getText(),txtapellido.getText(),Integer.parseInt(txtedad.getText()),txtfecha_n.getText(),fecha_registro,0);
+             try {
+String formato = jDateChooserFecha.getDateFormatString();
+Date date = jDateChooserFecha.getDate();
+SimpleDateFormat sdf = new SimpleDateFormat(formato);
+String fecha = String.valueOf(sdf.format(date));
+
+
+    usuarios=Datos_usuarios.crear(0,foto,Integer.parseInt(txtcedula.getText()),txtnombre.getText(),txtapellido.getText(),Integer.parseInt(txtedad.getText()),fecha,fecha_registro,0);
        repositorio.crear(usuarios);
         JOptionPane.showMessageDialog(this, "Jugador registrado", "Bien", JOptionPane.INFORMATION_MESSAGE);
         
@@ -300,7 +298,10 @@ public class JPane_usuariosl extends javax.swing.JPanel {
          juego=new Jform_serpiente();
          juego.setVisible(true);
          
-        
+      } catch (Exception e) {
+JOptionPane.showMessageDialog(null, "Al menos elija una FECHA DE NACIMIENTO VALIDA ", "Error..!!", JOptionPane.ERROR_MESSAGE);
+
+}  
           
           
           
@@ -381,25 +382,20 @@ jLabelFoto.setIcon( icono );
 
     }//GEN-LAST:event_btnfotoActionPerformed
 
-    private void txtfecha_nActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfecha_nActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtfecha_nActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnfoto;
     private javax.swing.JButton btnguardar;
+    private com.toedter.calendar.JDateChooser jDateChooserFecha;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelFoto;
     private javax.swing.JTextField txtapellido;
     private javax.swing.JTextField txtcedula;
     private javax.swing.JTextField txtedad;
-    private javax.swing.JTextField txtfecha_n;
     private javax.swing.JTextField txtnombre;
     // End of variables declaration//GEN-END:variables
 }

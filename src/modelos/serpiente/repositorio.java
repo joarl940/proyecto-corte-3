@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class repositorio {
     private static DBManager database = new DBManager();
-    
+                //interactua con la base de datos y envia para crear un jugador
        public static void crear (Datos_usuarios usuario) {
         try {
             String query = "INSERT INTO usuario (foto, cedula,nombre, apellido, edad,fecha_nacimiento,fecha_registro,puntaje) VALUES (?,?, ?,?, ?, ?, ?,?);";
@@ -41,7 +41,7 @@ public class repositorio {
         }
 
     }
-       
+            //obtiene todos los datos de la base dedatos y los retorna en un array list 
            public static ArrayList<Datos_usuarios> obtenerTodos() {
         ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
 
@@ -64,7 +64,7 @@ public class repositorio {
 
         return jugadores;
     }
-                 
+              //obtiene los el rango de edades de 5 a 15 y los devuelce en un arraylist   
            public static ArrayList<Datos_usuarios> categoriaInfantil() {
         ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
 
@@ -87,7 +87,8 @@ public class repositorio {
 
         return jugadores;
     }
-                            
+          //obtiene los el rango de edades de 16 a 24 y los devuelce en un arraylist   
+             
            public static ArrayList<Datos_usuarios> categoriaJuvenil() {
         ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
 
@@ -110,7 +111,8 @@ public class repositorio {
 
         return jugadores;
     }
-                            
+           //obtiene los el rango de edades de 25 a 50 y los devuelce en un arraylist   
+               
            public static ArrayList<Datos_usuarios> categoriaMayores() {
         ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
 

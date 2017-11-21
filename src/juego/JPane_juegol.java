@@ -46,10 +46,10 @@ private boolean finJuego;
 //movimiento
 private int dx,dy;
 
-//key input
+//entradas por teclado 
 private boolean arriba,abajo,derecha,izquierda,inicio;
 
-
+//constructor 
     public JPane_juegol() {
         initComponents();
        setFocusable(true);
@@ -57,11 +57,13 @@ private boolean arriba,abajo,derecha,izquierda,inicio;
         addKeyListener(this);
     }
 @Override
+    // crear un observador general da inicio al hilo
     public void addNotify(){
     super.addNotify();
     hilo=new Thread(this);
     hilo.start();
     }
+    //concierte la velocidad de nanosegundos a lo que se incremente
     private void setFPS(int fps){
     tiempo=1000/fps;
     }
@@ -71,6 +73,7 @@ private boolean arriba,abajo,derecha,izquierda,inicio;
     }
 
     @Override
+    //evento de las teclas que se presionaran y daran el movimiento a la serpiente
     public void keyPressed(KeyEvent e) {
         int k=e.getKeyCode();
         if(k==KeyEvent.VK_UP) arriba=true;
@@ -92,6 +95,7 @@ private boolean arriba,abajo,derecha,izquierda,inicio;
 
 
 @Override
+//
 public void run(){
     if(movimiento)return;
     inicio();
