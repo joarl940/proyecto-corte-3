@@ -4,10 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/principal/Puntajes.java</file>
-            <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/principal/Frame_Usuario.java</file>
-            <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/modelos/serpiente/Render.java</file>
-            <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/principal/Historial.java</file>
-            <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/modelos/serpiente/JPane_juegol.java</file>
+            <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/modelos/serpiente/JPane_usuariosl.java</file>
+            <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/juego/JPane_juegol.java</file>
+            <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/modelos/serpiente/repositorio.java</file>
             <file>file:/C:/Users/Jose/Documents/Programacion_2/Serpiente_Arley_Victor_301/src/principal/Categorias.java</file>
         </group>
     </open-files>

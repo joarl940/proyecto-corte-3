@@ -6,6 +6,7 @@
 package principal;
 
 import javax.swing.table.DefaultTableModel;
+import modelos.serpiente.JPane_usuariosl;
 
 /**
  *
@@ -13,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Puntajes extends javax.swing.JFrame {
     Principal principal;
+     JPane_usuariosl panel=new JPane_usuariosl();
 
     /**
      * Creates new form Usuarios_registrados
@@ -33,12 +35,11 @@ public class Puntajes extends javax.swing.JFrame {
         table_model_personas.addColumn("Fecha registro");
          table_model_personas.addColumn("puntaje");
         
-        jTable1.setModel(table_model_personas);
-        jTable2.setModel(table_model_personas);
-        jTable3.setModel(table_model_personas);
+      jTable1.setModel(table_model_personas);
+       
         
-       // panel_personas.setTableModel(table_model_personas);
-        //panel_personas.refreshTableModel();
+      panel.setTableModel(table_model_personas);
+        panel.refreshTableModelInfantilPun();
     }
 
     /**

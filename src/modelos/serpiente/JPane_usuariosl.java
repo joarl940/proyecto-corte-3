@@ -103,6 +103,20 @@ public class JPane_usuariosl extends javax.swing.JPanel {
             table_model_jugador.addRow(data);
         }
     }
+              public void refreshTableModelInfantilPun()
+    {
+        ArrayList<Datos_usuarios> lista_jugadores = repositorio.categoriainfantilpun();
+        while (table_model_jugador.getRowCount() > 0) {
+            table_model_jugador.removeRow(0);
+        }
+        
+        
+        for(Datos_usuarios p : lista_jugadores)
+        {
+            String[] data = {Integer.toString(p.getId()), p.getFoto(),Integer.toString(p.getCedula()), p.getNombre(), p.getApellido(), Integer.toString(p.getEdad()), p.getFecha_nacimiento(),p.getFecha_registro(),Integer.toString(p.getPuntaje())};
+            table_model_jugador.addRow(data);
+        }
+    }
        //deja los espacios vacios en el formulario
        public void resetformulario(){
       txtcedula.setText("");

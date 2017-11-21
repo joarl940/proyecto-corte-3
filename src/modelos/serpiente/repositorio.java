@@ -135,4 +135,26 @@ public class repositorio {
 
         return jugadores;
     }
+                     public static ArrayList<Datos_usuarios> categoriainfantilpun() {
+        ArrayList<Datos_usuarios> jugadores = new ArrayList<Datos_usuarios>();
+
+        try {
+            String query = "SELECT * FROM usuario WHERE edad Between 23 And 50 UNION SELECT * FROM usuario ORDER BY edad  LIMIT 0,3;";
+            PreparedStatement sentenciaP = database.open().prepareStatement(query);
+            ResultSet resultado = sentenciaP.executeQuery();
+
+            while (resultado.next()) {
+                jugadores.add(Datos_usuarios.crear(resultado.getInt("id"), resultado.getString("foto"), resultado.getInt("cedula"),resultado.getString("nombre"),resultado.getString("apellido"), resultado.getInt("edad"), resultado.getString("fecha_nacimiento"), resultado.getString("fecha_registro"),resultado.getInt("puntaje")));
+            }
+
+            sentenciaP.close();
+            database.close();
+
+            return jugadores;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
+        return jugadores;
+    }
 }
