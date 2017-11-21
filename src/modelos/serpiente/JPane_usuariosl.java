@@ -8,6 +8,7 @@ package modelos.serpiente;
 import juego.Jform_serpiente;
 import java.awt.Image;
 import java.io.File;
+import java.nio.channels.Channels;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -19,6 +20,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import juego.JPane_juegol;
 import principal.Principal;
 
 /**
@@ -31,8 +33,8 @@ public class JPane_usuariosl extends javax.swing.JPanel {
     Principal principal;
     Jform_serpiente juego;
     private DefaultTableModel table_model_jugador;
-    
-    
+    JPane_juegol puntos=new JPane_juegol();
+    repositorio rep= new repositorio();
 
     /**
      * Creates new form JPane_usuariosl
@@ -126,6 +128,7 @@ public class JPane_usuariosl extends javax.swing.JPanel {
       
      
               }
+       
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -285,7 +288,7 @@ public class JPane_usuariosl extends javax.swing.JPanel {
         LocalDateTime ahora=LocalDateTime.now();
         String fecha_registro=ahora.format(formatter);
         String foto=fichero.toString();
-        
+       int cedula=Integer.parseInt(txtcedula.getText());
                
         if( txtcedula.getText().isEmpty() ||
     txtedad.getText().isEmpty() || 
@@ -293,18 +296,28 @@ public class JPane_usuariosl extends javax.swing.JPanel {
         txtapellido.getText().isEmpty())
        {
      JOptionPane.showMessageDialog(this, "Por favor diligencie todo el formulario", "Error", JOptionPane.ERROR_MESSAGE);
-       
+      
 }else{
+        if(cedula!=0){  
+       rep.validacion(cedula);
+         resetformulario();
+          }
+        else{
+        
+               
+           
+                
+            
     
-             try {
-String formato = jDateChooserFecha.getDateFormatString();
-Date date = jDateChooserFecha.getDate();
-SimpleDateFormat sdf = new SimpleDateFormat(formato);
-String fecha = String.valueOf(sdf.format(date));
+      try {
+            String formato = jDateChooserFecha.getDateFormatString();
+            Date date = jDateChooserFecha.getDate();
+            SimpleDateFormat sdf = new SimpleDateFormat(formato);
+            String fecha = String.valueOf(sdf.format(date));
 
 
-    usuarios=Datos_usuarios.crear(0,foto,Integer.parseInt(txtcedula.getText()),txtnombre.getText(),txtapellido.getText(),Integer.parseInt(txtedad.getText()),fecha,fecha_registro,0);
-       repositorio.crear(usuarios);
+        usuarios=Datos_usuarios.crear(0,foto,Integer.parseInt(txtcedula.getText()),txtnombre.getText(),txtapellido.getText(),Integer.parseInt(txtedad.getText()),fecha,fecha_registro,0);
+        repositorio.crear(usuarios);
         JOptionPane.showMessageDialog(this, "Jugador registrado", "Bien", JOptionPane.INFORMATION_MESSAGE);
         
         
@@ -313,12 +326,12 @@ String fecha = String.valueOf(sdf.format(date));
          juego.setVisible(true);
          
       } catch (Exception e) {
-JOptionPane.showMessageDialog(null, "Al menos elija una FECHA DE NACIMIENTO VALIDA ", "Error..!!", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Al menos elija una FECHA DE NACIMIENTO VALIDA ", "Error..!!", JOptionPane.ERROR_MESSAGE);
 
 }  
           
           
-          
+        }
         }
         
         

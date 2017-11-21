@@ -34,18 +34,24 @@ public class Render {
           this.x=x;
           this.y=y;
     }
+     
+     //suma la posicion en la que se mueve la serpiente
      public void move(int dx,int dy) {
      x+=dx;
      y+=dy;
      }
+    
     public Rectangle getbound(){
     return new Rectangle(x, y, size, size);
     }
     
+    
     public boolean colision(Render o){
-    if (o==this)return false;
+    if (o==this)
+    return false;
     return getbound().intersects(o.getbound());
     }
+    //separa el cuerpo de la serpeinte para que se vean en cuadros
     public void render(Graphics2D g2d){
     g2d.fillRect(x+1, y+1, size-2, size-2);
     }

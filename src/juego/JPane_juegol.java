@@ -14,11 +14,12 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import modelos.serpiente.repositorio;
 import principal.Principal;
 
 /**
  *
- * @author Jose
+ * @author Jose Muñoz-Victor Preciado
  */
 public class JPane_juegol extends javax.swing.JPanel implements Runnable, KeyListener{
     
@@ -119,8 +120,11 @@ public void run(){
     }
 
 }
+//creacion de la pantalla del juego
+//BufferedImage se basa en los métodos de obtención y ajuste de datos 
+//de Raster y en los métodos de caracterización de color de ColorModel.
 private void inicio(){
-    image=new BufferedImage(ancho,alto,BufferedImage.TYPE_INT_ARGB);
+    image=new BufferedImage(ancho,alto,BufferedImage.TYPE_USHORT_565_RGB);
     g2d=image.createGraphics();
 movimiento=true;
 setUplevel();
@@ -128,6 +132,8 @@ finJuego=false;
 nivel=1;
     setFPS(nivel*10);
 }
+
+//ubica la posicion en pantalla de la serpiente
 public void setUplevel(){
 snake=new ArrayList<Render>();
 cuerpo=new Render(SIZE);
@@ -143,6 +149,7 @@ comida=new Render(SIZE);
 setComida();
 puntos=0;
 }
+//pone aleatorea mente los nuevos puntos que come la serpiente
 public void setComida(){
 int x=(int)(Math.random()*(ancho-SIZE));
 int y=(int)(Math.random()*(alto-SIZE));
@@ -151,7 +158,7 @@ y=y-(y%SIZE);
 comida.setPosicion(x, y);
 }
 
-
+//actualiza el frame al haber fin del juego 
   private void update() {
       if(finJuego){
       if(inicio){
@@ -211,7 +218,7 @@ if(cuerpo.getY()>alto)cuerpo.setY(0);
 
 
   }
-
+    
     private void requestRender() {
         render(g2d);
         Graphics g=getGraphics();
@@ -237,8 +244,10 @@ if(cuerpo.getY()>alto)cuerpo.setY(0);
     }
     
     g2d.setColor(Color.WHITE);
-    g2d.drawString("Jugador:  Arley    "+"puntos:   "+puntos+"    nivel  "+nivel,10,10);
+    g2d.drawString("Jugador:        "+"puntos:   "+puntos+"    nivel  "+nivel,10,10);
+    //repositorio.editar(puntos);
      if(dx==0&&dy==0){
+         
     g2d.drawString("INICIO", 150,200);
     }
     }
@@ -251,6 +260,7 @@ if(cuerpo.getY()>alto)cuerpo.setY(0);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        setBackground(new java.awt.Color(102, 153, 255));
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 formKeyPressed(evt);

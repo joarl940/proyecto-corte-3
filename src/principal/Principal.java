@@ -11,7 +11,7 @@ import juego.Jform_serpiente;
 
 /**
  *
- * @author Jose
+ * @author Jose muñoz - Victor preciado
  */
 public class Principal extends javax.swing.JFrame {
  JPane_usuariosl jugar;
